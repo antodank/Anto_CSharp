@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cSharpConcept1", "cSharpCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cSharpConcept2", "cSharpConcept2\cSharpConcept2.csproj", "{740C057E-E941-4441-9DF0-D619C2B2F85B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cSharpConcept3", "cSharpConcept3\cSharpConcept3.csproj", "{D7A7C09B-6750-4398-BE70-F4D5F0F8BD5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B8A90EF-E74F-4905-ABE5-8BFD1BEEF0AA}"
+	ProjectSection(SolutionItems) = preProject
+		CSharpConceptNotes.txt = CSharpConceptNotes.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{740C057E-E941-4441-9DF0-D619C2B2F85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{740C057E-E941-4441-9DF0-D619C2B2F85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{740C057E-E941-4441-9DF0-D619C2B2F85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A7C09B-6750-4398-BE70-F4D5F0F8BD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A7C09B-6750-4398-BE70-F4D5F0F8BD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A7C09B-6750-4398-BE70-F4D5F0F8BD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A7C09B-6750-4398-BE70-F4D5F0F8BD5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
