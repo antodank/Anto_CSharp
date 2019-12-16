@@ -1,0 +1,8 @@
+
+Query expressions can be used to query and to transform data from any LINQ-enabled data source
+
+A query is not executed until you iterate over the query variable, for example, in a foreach statement.
+
+There is no performance diffrence between Query Syntax and Method Syntax
+
+Query expressions can be compiled to expression trees or to delegates, depending on the type that the query is applied to. IEnumerable<T> queries are compiled to delegates. IQueryable and IQueryable<T> queries are compiled to expression trees.

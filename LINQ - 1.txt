@@ -1,0 +1,98 @@
+http://www.c-sharpcorner.com/technologies/linq
+
+
+var linqQuery = from emp in dbEntities.Employees  
+                join dep in dbEntities.Departments  
+                on emp.ID equals dep.EmpID  
+                select new {  
+                    emp.ID,  
+                        emp.Name,  
+                        dep.DepartmentName  
+                };  
+
+
+var crossJoinLinq = from customer in customers  
+from car in cars  
+select new {  
+    CustomerName = customer.Name, PhoneNumber = customer.PhoneNumber, CarName = car.ModelName  
+};  
+
+//Immediate query execution  
+foreach(var custmerData in crossJoinLinq) {  
+    Console.WriteLine("CustomerName :" + custmerData.CustomerName + " , PhoneNumber : " + custmerData.PhoneNumber + " , CarName : " + custmerData.CarName);  
+}
+
+=====================================
+
+OfType operator
+
+The OfType operator filters the collection based on a given typeWhere and OfType extension methods can be called multiple times in a single LINQ query.
+
+ArrayList mixedList = new ArrayList();  
+mixedList.Add(0);  
+mixedList.Add("Gnanavel Sekar");  
+mixedList.Add("Two");  
+mixedList.Add(3);  
+mixedList.Add(new Employee() {  
+    ID = 1, Name = "Gnanavel Sekar"  
+});  
+
+var emp = from s in mixedList.OfType<Employee>()  
+select s; 
+
+var intResult = from s in mixedList.OfType<int>()  
+select s;
+
+var stringResult = from s in mixedList.OfType<string>()  
+select s; 
+
+=====================================
+
+multiple where
+
+var result1 = farmerList.Where(a => a.Income > 25000).Where(a => a.Income < 40000);
+
+var result = from farmer in farmerList  
+where farmer.Income > 25000  
+where farmer.Income < 40000  
+select farmer;  
+
+=================================
+
+Inner Join With OR
+
+var q=from cust in context.tblCustomer
+ from ord in context.tblOrder
+ where (cust.CustID==ord.CustomerID || cust.ContactNo==ord.ContactNo)
+ select new 
+ {
+ cust.Name,
+ cust.Address,
+ ord.OrderID,
+ ord.Quantity
+ };
+
+=================================
+
+Inner Join with And
+
+var q=from cust in context.tblCustomer
+ join ord in context.tblOrder
+// Both anonymous types should have exact same number of properties having same name and datatype
+ on new {a=(int?)cust.CustID, cust.ContactNo} equals new {a=ord.CustomerID, ord.ContactNo}
+ select new 
+ {
+ cust.Name,
+ cust.Address,
+ ord.OrderID,
+ ord.Quantity
+ };
+
+===================================
+
+group
+
+var query = from word in words
+ group word.ToUpper() by word.Length into gr
+ orderby gr.Key
+ select new { Length = gr.Key, Words = gr };
