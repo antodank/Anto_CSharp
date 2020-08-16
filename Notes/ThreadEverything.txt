@@ -1,0 +1,97 @@
+﻿Multithreading is managed internally by a thread scheduler, a function the CLR typically delegates to the operating system.
+A thread scheduler ensures all active threads are allocated appropriate execution time, and those threads which are waiting or blocked do not consume CPU time.
+
+On a single-processor computer, a thread scheduler performs time-slicing. rapidly switching execution between threads
+
+On a multi-processor computer, multithreading is implemented with a mixture of time-slicing and genuine concurrency, 
+where different threads run code simultaneously on different CPUs
+
+- threads share (heap) memory with other threads running in the same application. they can share data
+
+
+Thread Class - encapsulates the execution of threads.
+Thread th1 = new Thread(obj.Fun1);
+
+Threadstart - constructor of this class allows to specify method which will run in a thread.
+Thread t1 = new Thread(new ThreadStart(ThreadMethod));
+
+Join() -  haults main thread util all started thread finish its task
+
+Foreground Thread - all threads are foreground by default. It stays alive even after main thread exits. 
+
+IsBackground = True :- Markes thread as background thread and allows to close main thread without any error.
+Background thread dies when we close or exit main applocation thread
+
+Anonymous method -we can specify thread method using ananymous method
+Thread t3 = new Thread(() => { code });
+
+Any try/catch/finally blocks in scope when a thread is created are of no relevance to the thread when it starts executing.
+try
+{
+    new Thread(func_name).Start();
+}
+catch (Exception ex)
+{
+    // We'll never get here!
+    Console.WriteLine("Exception!");
+}
+
+ThreadStatic - This attribute allows to specify a field which value will be unique for each thread.
+
+ThreadPool - consist managed threads.Thread life cycle (create,allocate resource,stop,destroy) is managed by ThreadPool class. 
+But we dont have any controls over the threads of the threadpool or we cant get return value from it or check whether thread is finished or not.
+
+ThreadPool.QueueUserWorkItem( func_name ,args)
+
+You cannot set the Name of a pooled thread
+Pooled threads are always background threads
+
+
+Task - its managed ThreadPool thread
+		We can check whether thread is finished or not
+		We can get return value
+		We can continue another thread
+
+Two ways to initialize task
+Task.Run( () => {your code})
+
+Task.Run( action: func_name())
+
+
+Wait() - waits until current task finishes its excetion
+waitAll() - waits until all task in Task array finishes its execution
+waitAny() - waits until any of the task completes its execution
+
+
+start task asynchronous delegate:
+
+Func<string, int> method = func_name;
+IAsyncResult cookie = method.BeginInvoke("Ankit Todankar", null, null);
+
+Instantiate a delegate targeting the method you want to run in parallel
+Call BeginInvoke on the delegate, saving its IAsyncResult return value.
+When you need the results, call EndInvoke on the delegate, passing in the saved IAsyncResult object.
+
+Parallel - is another class available in Task librarry and it is used for parallel processing.
+The parallel class has couple of static methods For, ForEach and invoke.
+
+Use Parallel class
+- when you want to split long running task into a set of related small task which can run concurrently
+- When you dont want to run your code sequentially.
+- not suggested for smaller workload
+
+PLINQ - turns a sequential query into a parallel one.
+
+
+
+
+Async - Await
+- Useful when your code performs heavy I/O operation
+- Main aaplication needs to be responsive even if it is executing long bg code
+- it does not improve performance but improves responsiveness
+
+
+http://www.albahari.com/threading/
+
+
+ 

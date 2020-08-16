@@ -1,0 +1,84 @@
+Garbage Collector is feture provide by CLR to clear unused managed objects.
+There are three generations 
+Gen 0
+Gen 1
+Gen 2
+
+When we start the application all objects are created in Gen 0.
+
+When GC runs it colllects and clears all unused objects from gen 0 and saves used objects in Gen 1 and Gen 2.
+
+Objects are moved from Gen depends on how long they are going to stay in memory.
+
+
+
+
+var
+data type is decided at compile time
+example of early binding
+used to store result set of LINQ queries
+
+
+dynamic
+data type is decided at runtime
+example of late binding
+used for reflection
+
+==========================================
+Static Everything
+
+Non-static classes can be instantiated.
+Static classes cannot be instantiated.
+Non-static classes can have instance method and static methods.
+Static classes can only have static methods.
+Instance methods must be called on the instances of the class, not the class itself.
+Static methods must be called on the class itself, not on the instances of the class.
+
+
+static class
+
+Static classes always derive from object, you can’t specify a different base type
+Static classes cannot implement an interface
+Static classes cannot have any instance members
+Static classes can’t declare any constructors and the compiler doesn’t create a parameterless constructor by default
+Static classes are implicitly abstract, you can’t add the abstract modifier yourself
+Static classes are sealed and therefore cannot be inherited. 
+Static classes may be generic
+Static classes may be nested, in either non-static or static classes
+Static classes may have nested types, either non-static or static
+Only static, top-level non-generic classes can contain extension methods
+
+
+Static Constructor
+
+Static Constructor is called automatically before first instance of the class is created.
+Declared by prefixing a static keyword to the constructor definition.
+It can not not take access modifiers or have any parameters.
+A static constructor cannot be called directly.
+The user has no control on when the static constructor is executed in the program.
+A typical use of static constructors is when the class is using a log file and the constructor is used to write entries to this file.
+Static constructors are also useful when creating wrapper classes for unmanaged code, when the constructor can call the LoadLibrary method.
+If a static constructor throws an exception, the runtime will not invoke it a second time, and the type will remain uninitialized 
+for the lifetime of the application domain in which your program is running.
+
+==========================================
+
+Singleton vs Static
+
+Singleton classes or design pattern can contain static as well as non-static members whereas if a class is marked static, 
+it only should contain static members.
+
+Singleton methods could be passed as a reference to other methods or objects as a parameter but static members could not be passed as a reference
+
+Singleton objects acn be disposed and cloned but static cant
+
+Singleton objects are stored on heap whereas static objects are stored on the stack.
+
+Singleton classes follows OOPS
+-implement interfaces 
+-inherit from other classes 
+
+Static classes cannot contain instance constructors and cannot be instantiated whereas the singleton classes have private instance constructor
+
+===========================================
+

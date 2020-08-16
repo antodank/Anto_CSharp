@@ -1,0 +1,47 @@
+﻿Method =
+is sed to provide behaviour to object
+In C#, Method and function is the same thing.
+
+
+delegate -
+
+A delegate is a type-safe function pointer that can reference a method that has the same signature as that of the delegate.
+Delegates are used to define callback methods and implement event handling.
+
+pointer to a function
+delegate is representative to communication between two things
+callback is main purpose of delegate
+and to implement events
+
+delegate can be called in two ways
+
+delgate deladd(int a, int b)
+
+deladd dd = new deladd(method);
+dd(1,2);
+
+deladd dd1 = delegate(int a, int b)
+{
+//code
+};
+
+Func implaies it will return some value and doesn't modify anything 
+Func is a delegate that points to a method that accepts one or more arguments and returns a value.
+e.g. Func<TParameter, TOutput>
+
+
+Action Method enables data modification and doesnt return a value.
+Action is a delegate that points to a method which in turn accepts one or more arguments but returns no value. 
+e.g. Action<TParameter>
+
+A Predicate is a delegate that accepts one or more generic parameters and returns a Boolean value
+A Predicate delegate is typically used to search items in a collection or a set of data
+Predicate<T>
+
+used in List<T> for methods like FindAll and RemoveAll
+
+
+Extention Method
+
+
+

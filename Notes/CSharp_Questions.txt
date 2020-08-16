@@ -1,0 +1,123 @@
+
+Array - we can specify size and collection of same datatype
+
+ArrayList collection of different datatype (type unsafe)
+
+List - list is collectiion strogly type objects but can hold duplicate objects
+
+Hashtable is basically a List with no possibility of duplicates (and better performance in some scenarios)
+
+Dictionary is used to store pairs of key/value. You cannot have duplicate keys.
+
+HashSet - if you want performance and do not care if the items are stored unsorted, then go in for HashSet
+
+ConcurrentDictionary - thread safe (can be safely accessed from several threads concurrently)
+HybridDictionary - optimized performance (for few items and also for many items)
+OrderedDictionary - values can be accessed via int index (by order in which items were added)
+SortedDictionary - items automatically sorted
+StringDictionary - strongly typed and optimized for strings
+
+
+lambda
+If your function is short and you don’t need to reuse it elsewhere then use lambdas
+
+var list = Enumerable.Range(1, 10).Select(i => i * 3)
+
+
+C# attribute - name in square brackets []
+[Serializable]
+class Person
+{
+}
+
+[DebuggerDisplay("Hello {FirstName} {LastName}!")]
+
+[DebuggerBrowsable]
+
+
+Reflection
+When we want assembly information at run time 
+
+-  you can generate classes and code on the fly (create object, call method) 
+
+pure function
+A function is pure if
+Its output only depends on input, and does not depend on anything outside the function, like global variable, input from outside world
+It does not have obvious interaction with the environment outside the function
+pure function is like mathematics function, which is a deterministic mapping between a set of input and a set of output.
+In LINQ, all query methods with queryable source output are pure functions.
+
+
+
+top 10 new features introduced in C# 6.0.
+– Auto Property Initializer
+– Await in a Catch and Finally Block in C#6.0
+– Dictionary Initializers in C# 6.0
+– Exception Filters in C#6.0
+– Expression Bodied Function & Property in C#6.0
+– Getter-only Auto Properties in C#6.0
+– NameOf Expression in C#6.0
+– Null Conditional Operator in C#6.0
+– Static Using Syntax in C#6.0
+– String Interpolation in C#6.0s
+
+
+Delegate
+Delegates are type safe function pointer. It holds reference to a function.
+
+Please feel free to assign, any method that matches this signature, 
+to the delegate and it will be called each time my delegate is called
+
+Usage - 
+You want to call series of method by using single delegate without writing lot of method calls.
+You want to call two methods same in signature but reside in different classes.
+You want to pass method as a parameter.
+
+Event handlers (for GUI and more)
+Starting threads
+Callbacks (e.g. for async APIs)
+
+
+
+//Method with no parameter - ThreadStart Delegate
+Thread t = new Thread (new ThreadStart (TestMethod));
+t.Start();
+void TestMethod() {}
+
+//Method with a parameter - ParameterizedThreadStart  Delegate
+Thread t = new Thread (new ThreadStart (TestMethod));
+t.Start(5);
+t.Start("test");
+void TestMethod(Object o) {}
+
+//lambda expression
+Thread t = new Thread ( () => TestMethod("Hello") );
+t.Start();
+void TestMethod(string input) {}
+
+//lambda expression for smaller thread methods
+new Thread (() =>
+{
+  Console.WriteLine ("I'm running on another thread!");
+  Console.WriteLine ("This is so easy!");
+}).Start();
+
+//anonymous methods C# 2.0
+new Thread (delegate()
+{
+  Console.WriteLine ("I'm running on another thread!");
+}).Start();
+
+//Task Parallel Libray
+static void Main()
+{
+  System.Threading.Tasks.Task.Factory.StartNew (Go);
+} 
+static void Go()
+{
+  Console.WriteLine ("Hello from the thread pool!");
+}
+
+interface vs delegate
+
+https://www.c-sharpcorner.com/UploadFile/1c8574/delegates-interface-discussion/

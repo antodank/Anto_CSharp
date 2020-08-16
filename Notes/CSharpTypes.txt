@@ -1,0 +1,48 @@
+﻿Enum - 
+is a value Type
+is a group of constant variable
+enum values can be auto incremental 
+we can create object
+we need to cast it use its values
+
+When to use -
+Its easier to maintain and understand
+increases code readability
+
+
+Value Types Vs Ref Types
+Value Types - struct and enum
+Ref Types - classes
+
+int - 
+is a struct
+is a value type
+
+string 
+is a class 
+is a ref type
+
+Value Type - maintains data on stack
+Ref Types - maintains ref variable on stack
+			actual data  / memory is stored on heap
+			Heap allocates memory dynamically and maintained by GC
+
+ClassA objA = new ClassA();
+ClassB objB = objA;
+
+in above case both object referes to same memory / data
+
+int x = 4;
+int y = x;
+
+in above case, both x and y variables holds its own value
+
+Value Types default value is depend on data for e.g. int  - 0, 
+value types cant have null value.
+
+Reference Type - reference type can be null
+
+Struct -
+it helps you to make a single variable hold related data of various data types.
+just define. initialization not needed.
+

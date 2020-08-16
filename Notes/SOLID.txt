@@ -1,0 +1,38 @@
+Single responsibility means that your class should only do one thing at a time
+
+- design class with secific name and assign very specific responsibility
+
+
+for Employee class -
+should contain employee related stuff
+
+
+The Open/Closed Principle states 
+that a module should be open for extension, but closed for modification.
+
+- avoid changing existing code but keep provision extentions
+
+Paymnet is intended for payment and refund and void then create separate interface or abstract class
+create own class for each vendor for all those method
+
+Liskov Substitution Principle
+you should be able to substitute a parent class with any of its child classes, without breaking the system
+
+achive by creating abstract class with common method as parent class
+or define virtua methods in parent
+
+
+Interface Seggragation
+
+Client should never be forced to depend on method it doesnt use
+Changing any method in class should not affect the classes that dont depend on it
+replace large interfaces with small intefaces specific to particular task
+
+Dependency inversion 
+The dependency inversion principle states that high-level modules should not depend on low-level modules - both should depend on abstractions.
+Abstractions should not depend on details. Details should depend on abstractions.
+
+A good example of this is switching your database driver from SQL to NoSQL. If you depend on the abstract interfaces for accessing the database, you’d be able to easily change
+
+Class or interface is intended to handle Database then create common methods connect fecth disconnect execute
+As per provider such as SQL, Oracle, Mongo , NoSQL we can will inject instaces via constructor or methods
