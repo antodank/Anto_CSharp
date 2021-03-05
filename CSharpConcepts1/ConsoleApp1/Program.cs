@@ -12,39 +12,44 @@ namespace ConsoleApp1
 {
     class Program
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             // ============ parent child relation 
 
 
             #region Prenthild
-            Parent p = new child();
-            p.Method();
-            p.MethodA();
-            p.MethodB();
 
-            Parent p2 = new Parent();
-            p2.Method();
-            p2.MethodA();
-            p2.MethodB();
+            //Parent p = new child();
+            //p.Method();
+            //p.MethodA();
+            //p.MethodB();
 
-            child c = new child();
-            c.Method();
-            c.MethodA();
-            c.MethodB();
-            c.MethodC();
+            //Parent p2 = new Parent();
+            //p2.Method();
+            //p2.MethodA();
+            //p2.MethodB();
 
-            ////Child c1 = new Parent();  // will throw error
+            //child c = new child();
+            //c.Method();
+            //c.MethodA();
+            //c.MethodB();
+            //c.MethodC();
 
-            Employee emp = null;
+            //////Child c1 = new Parent();  // will throw error
 
-            if(emp != null && emp.name == "")
-            {
-                Write("fff");
-            }
+            //Employee emp = null;
 
-            string abc = null;
-            Write(abc.Length);
+            //if(emp != null && emp.name == "")
+            //{
+            //    Write("fff");
+            //}
+
+            //string abc = null;
+            //Write(abc.Length);
 
             #endregion
 
@@ -102,6 +107,53 @@ namespace ConsoleApp1
 
             HashSet<string> hashSet = collectionClass.getHashSet(); // removes duplicate element from coolection as well as strongly typed
 
+
+            System.Collections.ArrayList fruits = new System.Collections.ArrayList(4);
+            fruits.Add("Mango");
+            fruits.Add("Orange");
+            fruits.Add("Apple");
+            fruits.Add(3.0);
+            fruits.Add("Banana");
+
+            List<string> nameList = new List<string>();
+            nameList.Add("ABC");
+            nameList.Add("DEF");
+            nameList.Add("GHI");
+
+            //IEnumerable interface contains only a single method definition i.e.GetEnumerator()
+            //The IEnumerator interface implements two  methods MoveNext() and Reset() and it also has one property called Current that returns the current element in the list.
+            //can move forward only over a collection, it can’t move backward and between the items
+            //It provides read-only access to collections. We cannot change any item inside an IEnumerable List
+            //supports deferred execution 
+            IEnumerator enumerator = nameList.GetEnumerator();
+
+            while(enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current);
+            }
+
+            //ICollection supports some extra properties like Count / IsSynchronized Property / SyncRoot Property / CopyTo Method
+
+            ICollection collection = nameList;
+            Console.WriteLine(collection.Count);
+            Array array = new string[collection.Count];
+            collection.CopyTo(array, 0);
+
+            // ICollection This interface allows us to add items to and remove items from the collection. 
+            //It also provides support for accessing the items from the index.
+
+            IList newList = nameList;
+
+            newList.Add("JKL");
+            Console.WriteLine(newList[3]);
+
+            // yield
+
+            foreach(var item in func(2,10))
+            {
+                Console.WriteLine(item);
+            }
+
             #endregion
 
 
@@ -115,42 +167,34 @@ namespace ConsoleApp1
 
             #endregion
 
+            #region absatrct
             //Abstract
 
             //ClassAbstract objabstract = new ClassAbstract();  // not possible to instatiate
 
-            classDerived derived = new classDerived("Ankit");
-            derived.MethodA();
-            derived.MethodB();
-            derived.MethodC();
-            derived.MethodD();
+            //classDerived derived = new classDerived("Ankit");
+            //derived.MethodA();
+            //derived.MethodB();
+            //derived.MethodC();
+            //derived.MethodD();
 
-            ClassAbstract objAbstract = new classDerived("Viraj");
-            objAbstract.MethodA();
-            objAbstract.MethodB();
-            objAbstract.MethodC();
+            //ClassAbstract objAbstract = new classDerived("Viraj");
+            //objAbstract.MethodA();
+            //objAbstract.MethodB();
+            //objAbstract.MethodC();
             //objAbstract.MethodD(); // not available
+
+            #endregion
 
 
             // Delegate
 
-            CallBackA callBackA = new CallBackA();
-            delCallBack callback = callBackA.methodcallbackA;
+            // CallBackA callBackA = new CallBackA();
+            // delCallBack callback = callBackA.methodcallbackA;
 
-            CallBack testCallBack = new CallBack();
+            // CallBack testCallBack = new CallBack();
 
-           testCallBack.StartNewTask(callback);
-
-
-            // collection
-
-            System.Collections.ArrayList fruits = new System.Collections.ArrayList(4);
-            fruits.Add("Mango");
-            fruits.Add("Orange");
-            fruits.Add("Apple");
-            fruits.Add(3.0);
-            fruits.Add("Banana");
-
+            //testCallBack.StartNewTask(callback);
 
 
 
@@ -209,6 +253,19 @@ namespace ConsoleApp1
         }
 
         private static double AddNumbers(double num1, double num2) => num1 + num2;
+
+        //To use "yield return", you just need to create a method with a return type that is an IEnumerable 
+        //and use "yield return" to return a value to set in the loop body.
+        //The yield keyword can do a state-full iteration without the need of creating a temporary collection. 
+        //In other words, when using the "yield return" statement inside an iterator, you need not create a temporary collection to store data before it returned. 
+        //You can take advantage of the yield return statement to return each element in the collection one at a time
+        private static IEnumerable func(int start, int number)
+        {
+            for(int i = 0; i < number;i++)
+            {
+                yield return start + 2 * i;
+            }
+        }
 
 
     }
